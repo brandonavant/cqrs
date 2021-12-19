@@ -1,0 +1,9 @@
+global using MediatR;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using Cqrs.Domain.SeedWork;
+global using Cqrs.Domain.Exceptions;
+global using Cqrs.Domain.Events;
+global using Cqrs.Domain.AggregateModel.BlogAggregate;
