@@ -16,11 +16,22 @@ public class Blog : Entity<BlogId>, IAggregateRoot
     {
         _comments = new();
 
+        Id = Guid.NewGuid();
         Title = title;
         Content = content;
         Author = new(authorUsername);         
 
         AddBlogCreatedDomainEvent();
+    }
+
+    public static Blog CreateBlog(string title, string content, string authorUsername)
+    {
+        if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content) || string.IsNullOrEmpty(authorUsername))
+        {
+            throw new ArgumentException("You must provide a valid title, content, and author's user name.");
+        }
+
+        return new Blog(title, content, authorUsername);
     }
 
     private void AddBlogCreatedDomainEvent()

@@ -1,12 +1,12 @@
 namespace Cqrs.Domain.SeedWork;
 
-public abstract class Entity
+public abstract class Entity<TId>
 {
-    private Guid _id;
+    private TId _id;
     private List<INotification>? _domainEvents;
     public IReadOnlyCollection<INotification>? DomainEvents => _domainEvents?.AsReadOnly();
 
-    public Guid Id
+    public TId Id
     {
         get
         {
